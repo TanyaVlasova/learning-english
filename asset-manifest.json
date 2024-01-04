@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/TanyaVlasova/learning-english.git/static/css/main.3f1d0b24.css",
+    "main.js": "/TanyaVlasova/learning-english.git/static/js/main.f3777908.js",
+    "static/media/YandexSansDisplay-Light.ttf": "/TanyaVlasova/learning-english.git/static/media/YandexSansDisplay-Light.6c598accd937fea38926.ttf",
+    "static/media/YandexSansDisplay-Thin.ttf": "/TanyaVlasova/learning-english.git/static/media/YandexSansDisplay-Thin.b2abd10652b26df1257a.ttf",
+    "static/media/YandexSansDisplay-Bold.ttf": "/TanyaVlasova/learning-english.git/static/media/YandexSansDisplay-Bold.54cceaa0fa5c4fa6e5c1.ttf",
+    "static/media/YandexSansDisplay-Regular.ttf": "/TanyaVlasova/learning-english.git/static/media/YandexSansDisplay-Regular.f7b0cd2fb662aa10f1b2.ttf",
+    "index.html": "/TanyaVlasova/learning-english.git/index.html",
+    "main.3f1d0b24.css.map": "/TanyaVlasova/learning-english.git/static/css/main.3f1d0b24.css.map",
+    "main.f3777908.js.map": "/TanyaVlasova/learning-english.git/static/js/main.f3777908.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3f1d0b24.css",
+    "static/js/main.f3777908.js"
+  ]
+}
