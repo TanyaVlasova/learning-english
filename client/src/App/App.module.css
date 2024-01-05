@@ -1,9 +1,9 @@
 .wrapper {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(242, 239, 237);
+  background-color: #f2efed;
   padding: 20px;
   box-sizing: border-box;
 }

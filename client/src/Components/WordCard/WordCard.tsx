@@ -1,23 +1,21 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import cn from "classnames";
 
-import { shuffle } from "../../helpers";
-import { dictionary } from "../../data";
+import Modal from "../Modal";
 import styles from "./WordCard.module.css";
 
 import type { FC } from "react";
-import type { Word } from "../../data";
+import type { WordData } from "../../api";
 
 interface WordProps {
   className?: string;
+  dictionary: WordData[];
 }
 
-const shuffleDictionary = shuffle<Word>(dictionary);
-
 const WordCard: FC<WordProps> = (props) => {
-  const { className, ...restProps } = props;
-  const [data, setData] = useState(null);
+  const { className, dictionary, ...restProps } = props;
   const [translate, setTranslate] = useState(false);
+  const [modal, setModal] = useState(false);
   const [counter, setCounter] = useState(0);
 
   const handleNext = useCallback(() => {
@@ -30,20 +28,22 @@ const WordCard: FC<WordProps> = (props) => {
     setCounter(0);
   }, []);
 
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((res) => setData(res.message));
+  const handleOpenModal = useCallback(() => {
+    setModal(true);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setModal(false);
   }, []);
 
   return (
     <div className={cn(styles.wrapper, className)} {...restProps}>
-      {shuffleDictionary[counter] ? (
+      {dictionary[counter] ? (
         <>
-          <div className={styles.word}>{shuffleDictionary[counter].word}</div>
+          <div className={styles.word}>{dictionary[counter].word}</div>
           {translate && (
             <div className={styles.translation}>
-              - {shuffleDictionary[counter].translation} -
+              - {dictionary[counter].translation} -
             </div>
           )}
           <button
@@ -64,6 +64,15 @@ const WordCard: FC<WordProps> = (props) => {
           </button>
         </>
       )}
+
+      <button
+        className={cn(styles.button, styles.plus)}
+        onClick={handleOpenModal}
+      >
+        +
+      </button>
+
+      {modal && <Modal onClose={handleCloseModal} />}
     </div>
   );
 };
