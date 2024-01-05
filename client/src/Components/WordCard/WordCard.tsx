@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import cn from "classnames";
 
 import { shuffle } from "../../helpers";
@@ -16,6 +16,7 @@ const shuffleDictionary = shuffle<Word>(dictionary);
 
 const WordCard: FC<WordProps> = (props) => {
   const { className, ...restProps } = props;
+  const [data, setData] = useState(null);
   const [translate, setTranslate] = useState(false);
   const [counter, setCounter] = useState(0);
 
@@ -27,6 +28,12 @@ const WordCard: FC<WordProps> = (props) => {
 
   const handleRestart = useCallback(() => {
     setCounter(0);
+  }, []);
+
+  useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((res) => setData(res.message));
   }, []);
 
   return (
