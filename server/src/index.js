@@ -1,15 +1,13 @@
 const express = require("express");
+const dictionaryRouter = require("./routes/dictionary.routes");
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
+app.use(express.json());
+app.use("/api", dictionaryRouter);
+
 app.listen(PORT, () => {
   console.log(`Server starting on port ${PORT}`);
-});
-
-app.get("/api", (req, res) => {
-  res.json({
-    message: "Helloooooooooooooo",
-  });
 });
